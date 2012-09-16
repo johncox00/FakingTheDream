@@ -1,0 +1,50 @@
+<h1>Listing Songs</h1>
+
+</table>
+
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Album
+        </th>
+        <th>
+            Artist
+        </th>
+        <th>
+            Genre(s)
+        </th>
+        <th>
+            Tags
+        </th>
+
+        <th></th>
+    </tr>
+
+<% @songs.each do |song| %>
+  <tr>
+    <td><%= song.title %></td>
+    <td><%= song.album.title unless song.album.nil? %></td>
+    <td><%= song.album.artist.name unless song.album.nil? %></td>
+    <td><ul>
+      <% song.genres.each do |g| %>
+        <li><%= g.name %></li>
+      <% end %>
+    </ul></td>
+    <td><ul>
+      <% song.tags.each do |t| %>
+        <li><%= t.value %></li>
+      <% end %>
+    </ul></td>
+    <td><%= link_to 'Show', song %></td>
+    <td><%= link_to 'Edit', edit_song_path(song) %></td>
+    <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Song', new_song_path %>

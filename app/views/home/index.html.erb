@@ -1,0 +1,20 @@
+<h1>Faking the Dream</h1>
+<p>If you don't sing along, we're just a crappy cover band.</p>
+
+<table>
+  <thead>
+    <td>Title</td>
+    <td>Artist</td>
+    <td></td>
+    <td></td>
+  </thead>
+  <% @songs.each do |s| %>
+  <tr>
+    <td><%= s.title %></td>
+    <td><%= s.artist.name %></td>
+    <td><a href="/song/<%= s.id %>">View</a></td>
+  </tr>
+  <% end %>
+</table>
+
+

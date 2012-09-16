@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Faking The Dream :: Admin</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript" src="/admin_js/admin.js"></script>
+  <script type="text/javascript" src="/admin_js/song_create_edit.js"></script>
+</head>
+<body>
+<h2>Faking the Dream - Admin</h2><br />
+
+<%= yield %>
+
+</body>
+</html>

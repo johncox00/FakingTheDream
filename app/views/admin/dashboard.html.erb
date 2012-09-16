@@ -1,0 +1,13 @@
+<div style="width:45%; float:left;">
+  <a href="javascript:void(0)" onclick="setCurrentSong(-1)">Take 5</a>
+  <table>
+	<% @songs.each do |s| %>
+	  <tr>
+	  	<td><%= s.title %></td>
+	  	<td><%= s.artist.name %></td>
+	  	<td><a href="javascript:void(0)" onclick="setCurrentSong(<%=s.id%>)">Set Current</a></td>
+	  </tr>
+	<% end %>
+  </table>
+</div>
+<div id="current_song" style="width:45%; float:left;"></div>
