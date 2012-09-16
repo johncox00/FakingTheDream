@@ -28,6 +28,7 @@ bryan_adams = Artist.create(name: 'Bryan Adams')
 chumbawumba = Artist.create(name: 'Chumbawumba')
 survivor = Artist.create(name: 'Survivor')
 beastie_boys = Artist.create(name: 'Beastie Boys')
+violent_femmes = Artist.create(name: 'Violent Femmes')
 
 files = ['everybody_wants_to_rule_the_world.html',
 'should_i_stay_or_should_i_go.html',
@@ -130,3 +131,9 @@ song13.tags.push(Tag.where(value: 'ridiculous'))
 song13.genres.push(Genre.where(name:'Rock'))
 song13.genres.push(Genre.where(name:'90s'))
 song13.save
+
+song14 = Song.create(title: "Blister in the Sun", artist: violent_femmes, lyric: lyrics['sblister_in_the_sun.html'])
+song14.tags.push(Tag.where(value: 'ridiculous'))
+song14.genres.push(Genre.where(name:'Alternative'))
+song14.genres.push(Genre.where(name:'90s'))
+song14.save
