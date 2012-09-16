@@ -42,7 +42,8 @@ files = ['everybody_wants_to_rule_the_world.html',
 'summer_of_69.html',
 'tubthumping.html',
 'eye_of_the_tiger.html',
-'sabotage.html']
+'sabotage.html',
+'blister_in_the_sun.html']
 lyrics = {}
 files.each do |file_name|
 	file = File.new("./db/lyrics/" + file_name, "r")
@@ -132,7 +133,7 @@ song13.genres.push(Genre.where(name:'Rock'))
 song13.genres.push(Genre.where(name:'90s'))
 song13.save
 
-song14 = Song.create(title: "Blister in the Sun", artist: violent_femmes, lyric: lyrics['sblister_in_the_sun.html'])
+song14 = Song.create(title: "Blister in the Sun", artist: violent_femmes, lyric: lyrics['blister_in_the_sun.html'])
 song14.tags.push(Tag.where(value: 'ridiculous'))
 song14.genres.push(Genre.where(name:'Alternative'))
 song14.genres.push(Genre.where(name:'90s'))
