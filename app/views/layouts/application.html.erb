@@ -10,14 +10,17 @@
 <body>
 <div class="container">
 	<ul class="nav-bar">
-	<li>
-		<a href="/" class="main">Home</a>
-    </li>
-    <li>
-		<a href="/current" class="main">Current</a>
-    </li>
-	
-</ul>
+		<li class="has-flyout">
+			<a href="" class="main">Menu</a>
+			<a href="http://www.zurb.com" class="flyout-toggle"><span> </span></a>
+			<div class="flyout">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/current">Current</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
 <%= yield %>
 </div>
 </body>
