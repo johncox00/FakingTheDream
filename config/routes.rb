@@ -10,6 +10,8 @@ FakingTheDream::Application.routes.draw do
 
   match 'current' => 'home#current'
 
+  match 'songlist' => 'home#songlist'
+
   match 'get_current_song_id' => 'home#get_current_song_id'
 
   match 'admin/dashboard/set_current_song' => "admin#set_current_song"#. :via => [:post]

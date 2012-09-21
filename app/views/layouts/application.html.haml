@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title
+      FakingTheDream
+    %meta(name="viewport" content="width=device-width, initial-scale=1")
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    %div(class="container")
+      %ul(class="nav-bar")
+        %li(class="has-flyout")
+          %a(href="" class="main") 
+            Menu
+          %a(href="javascript:void(0)" class="flyout-toggle")
+            %span 
+            %div(class="flyout")
+              %ul
+                %li
+                  %a(href="/")
+                    Home
+                %li
+                  %a(href="/current")
+                    Current
+                %li
+                  %a(href="/songlist")
+                    Song List
+      %div(class="six mobile-four columns centered")
+        = yield

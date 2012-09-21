@@ -1,0 +1,9 @@
+%div#current_song(class="twelve phone-four columns")
+  Get ready!
+
+%input#song_id(type="hidden" value="-1")
+
+:javascript
+    var id = $("#song_id").val();
+    CheckCurrentSong();
+    var t = setInterval("CheckCurrentSong()", 5000);

@@ -1,0 +1,7 @@
+%h2 
+  = @song.title
+%div(class="byline")
+  = @song.artist.name
+
+%div(class="lyrics")
+  =raw @song.lyric

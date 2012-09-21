@@ -3,6 +3,10 @@ class HomeController < ApplicationController
     @songs = Song.all
   end
 
+  def songlist
+    @songs = Song.all
+  end
+
   def song
   	@song = Song.find(params[:id])
 
