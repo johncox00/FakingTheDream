@@ -1,11 +1,5 @@
 html {
-  background: url(/assets/Rock-Out.jpg) no-repeat top center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  opacity:0.3;
-  filter:alpha(opacity=30);
+
 }
 
 body {
@@ -13,7 +7,8 @@ body {
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px; 
+}
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -25,7 +20,16 @@ p, ol, ul, td {
   background-color: #f00;
   display:inline;
 }
-
+.bg-img {
+   background: url(/assets/Rock-Out.jpg) no-repeat top center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity:0.3;
+  filter:alpha(opacity=30);
+  z-order: 100;
+}
 pre {
   background-color: #eee;
   padding: 10px;
