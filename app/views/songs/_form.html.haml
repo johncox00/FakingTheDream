@@ -14,17 +14,16 @@
   /<input type="hidden" id="CreateNewAlbum" name="CreateNewAlbum" value="false" />
 
   .field
-    = f.label :title
-    %br
-    = f.text_field :title
+    = f.text_field :title, placeholder: "Title"
   .field
-    = f.select :artist_id, options_from_collection_for_select(@artists, "id", "name")
+    - if @song.artist
+      = f.select :artist_id, options_from_collection_for_select(@artists, "id", "name", @song.artist.id)
+    - else
+      = f.select :artist_id, options_from_collection_for_select(@artists, "id", "name")
   /- fields_for @song.artist do |artist_fields|
   /  .field
   /    = artist_fields.collection_select("song", "artist_id", Artist.all.collect {|a| [ a.name, a.id ] }, { :include_blank => false })
   .field
-    = f.label :lyric
-    %br
     = f.cktext_area :lyric 
   .actions
     = f.submit 
