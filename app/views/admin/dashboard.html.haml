@@ -1,0 +1,23 @@
+.row
+  .span6
+    %a{href:"javascript:void(0)",onclick:"setCurrentSong(-1)"}  
+      Take 5
+    %table.table
+      - @songs.each do |s|
+        %tr
+          %td
+            = s.title
+          %td
+            = s.artist.name
+          %td 
+            %a{href:"javascript:void(0)",onclick:"setCurrentSong(#{s.id})"} 
+              Set Current
+
+  .span6
+    %input#song_id(type="hidden" value="-1")
+    %div#current_song
+
+:javascript
+    var id = $("#song_id").val();
+    CheckCurrentSong();
+    var t = setInterval("CheckCurrentSong()", 5000);

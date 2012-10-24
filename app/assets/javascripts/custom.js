@@ -62,7 +62,7 @@ function CheckCurrentSong () {
             }
         },
         error: function (foo, result, goo) {
-            alert(foo + '\n' + result + '\n' + goo);
+            //alert(foo + '\n' + result + '\n' + goo);
         }
     });
 }

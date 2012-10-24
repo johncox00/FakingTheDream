@@ -1,5 +1,7 @@
 FakingTheDream::Application.routes.draw do
   
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users
 
   get "home/index"
@@ -9,10 +11,12 @@ FakingTheDream::Application.routes.draw do
   match 'song/:id' => 'home#song'
 
   match 'current' => 'home#current'
+  match 'admin/current' => 'home#current'
 
   match 'songlist' => 'home#songlist'
 
   match 'get_current_song_id' => 'home#get_current_song_id'
+  match 'admin/get_current_song_id' => 'home#get_current_song_id'
 
   match 'admin/dashboard/set_current_song' => "admin#set_current_song"#. :via => [:post]
 
@@ -20,9 +24,7 @@ FakingTheDream::Application.routes.draw do
 
   resources :songs,:path => "/admin/songs"
 
-  resources :albums
-
-  resources :artists
+  resources :artists, :path => "/admin/artists"
 
   resources :tags
 

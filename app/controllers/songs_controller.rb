@@ -26,6 +26,7 @@ class SongsController < AdminController
   def new
     @song = Song.new
     @genres = Genre.all
+    @artists = Artist.all
     @tags = Tag.all 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,6 +37,9 @@ class SongsController < AdminController
   # GET /songs/1/edit
   def edit
     @song = Song.find(params[:id])
+    @genres = Genre.all
+    @artists = Artist.all
+    @tags = Tag.all 
   end
 
   # POST /songs
@@ -43,6 +47,7 @@ class SongsController < AdminController
   def create
     @song = Song.new(params[:song])
     @genres = Genre.all
+    @artists = Artist.all
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
@@ -58,7 +63,7 @@ class SongsController < AdminController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
-    @genres = Genre.all
+    #params[:artist] = Artist.find(params[:artist])
     respond_to do |format|
       if @song.update_attributes(params[:song])
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
