@@ -2,7 +2,7 @@ class AdminController < ApplicationController
 	layout 'admin'
 
 	def dashboard
-	  @songs = Song.all
+	  @songs = Song.find(:all, :order => :title)
 	end
 
 	def set_current_song
