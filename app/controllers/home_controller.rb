@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def songlist
-    @songs = Song.all
+    @songs = Song.find(:all, :order => :title)
   end
 
   def song
