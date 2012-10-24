@@ -23,4 +23,4 @@ class AdminController < ApplicationController
 	     format.json { render json: new_current }
 	   end
 	end
-end
+end 
