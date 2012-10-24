@@ -18,29 +18,20 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
-  <div class="field">
-    <%= select("artist", "id", Artist.all.collect {|a| [ a.name, a.id ] }, { :include_blank => false }) %>
-    
-  </div>
-  <div class="field">
-    <%= select("album", "id", Album.all.collect {|a| [ a.title, a.id ] }, { :include_blank => false }) %>
-  </div>
+  <% fields_for @song.artist do |artist_fields| %>
+    <div class="field">
+      <%= artist_fields.collection_select("song", "artist_id", Artist.all.collect {|a| [ a.name, a.id ] }, { :include_blank => false }) %> 
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :lyric %><br />
     <%= f.text_area :lyric %>
   </div>
   
   <div class="editor-field">
-    <ul>
-      <% if !@song.genres.nil? %>
-        <% @song.genres.each do |genre| %>
-          <li>
-            <%= check_box_tag 'genre_ids[]', genre.id %>
-            <%= h genre.name %>
-          </li>
-        <% end %>
-  <% end %>
-</ul>
+    <% fields_for 'song[genres]', @song.genres do |genres| %>
+    
+    <% end %>
     <br />
     <input type="text" id="NewGenre" name="NewGenre" />
     <a href="javascript:void(0)" onclick="addNewGenre()">Add New</a>

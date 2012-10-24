@@ -1,0 +1,10 @@
+<ul>
+      <% if !genres.nil? %>
+        <% genres.each do |genre| %>
+          <li>
+            <%= check_box_tag 'genre_ids[]', genre.id %>
+            <%= h genre.name %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>

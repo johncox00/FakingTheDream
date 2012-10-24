@@ -12,7 +12,7 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+	gem 'sqlite3'
 end
 
 
@@ -21,15 +21,19 @@ end
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem 'compass-rails'
+  gem 'compass'
+  gem 'sass-rails',   '~> 3.2.3'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'zurb-foundation'
+#gem 'zurb-foundation'
 gem 'jquery-rails'
 gem 'haml'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

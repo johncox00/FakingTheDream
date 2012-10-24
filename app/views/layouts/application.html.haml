@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 %html
   %head
+    %meta{charset:"utf-8"}
+    %meta{"http-equiv"=>"X-UA-Compatible",content:"IE=Edge,chrome=1"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1.0"}
     %title
-      FakingTheDream
-    %meta(name="viewport" content="width=device-width, initial-scale=1")
-    = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
+      = content_for?(:title) ? yield(:title) : "Faking The Dream" 
+    
     = csrf_meta_tags
+    
+    = render 'shared/ie_scripts'
+    
+    = stylesheet_link_tag "application", :media => "all"
 
+    = favicon_link_tag 'images/apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+
+    = favicon_link_tag 'images/apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' 
+
+    = favicon_link_tag 'images/apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' 
+
+    = favicon_link_tag 'images/apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' 
+
+    = favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon'
+
+    = javascript_include_tag "application"
   %body
-    %div(class="container")
-      %ul(class="nav-bar")
-        %li(class="has-flyout")
-          %a(href="" class="main") 
-            Menu
-          %a(href="javascript:void(0)" class="flyout-toggle")
-            %span 
-            %div(class="flyout")
-              %ul
-                %li
-                  %a(href="/")
-                    Home
-                %li
-                  %a(href="/current")
-                    Current
-                %li
-                  %a(href="/songlist")
-                    Song List
-      %div
-        %div(class="six mobile-four columns centered")
+
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand(href="/")
+            Faking The Dream
+          .container.nav-collapse
+            %ul.nav
+              %li
+                = link_to "Current Song", "/current" 
+              %li
+                = link_to "Song List", "/songlist" 
+
+    .container
+      .row
+        .span6.offset3
+          = bootstrap_flash
           = yield
+
+      %footer
+        .row
+          .span6.offset3
+            %p
+              &copy; Faking he Dream 2012
+
+    
+

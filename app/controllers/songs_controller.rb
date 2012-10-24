@@ -25,7 +25,8 @@ class SongsController < AdminController
   # GET /songs/new.json
   def new
     @song = Song.new
-
+    @genres = Genre.all
+    @tags = Tag.all 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @song }
