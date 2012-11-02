@@ -58,6 +58,7 @@ function CheckCurrentSong () {
             if (result.id < 0) {
                 var resting = '<p>We\'re taking 5.</p><p>Stay tuned. When we start again this page will refresh on its own to show you the word.</p>';
                 $("#current_song").html(resting);
+                $("#current_chart").html(resting);
                 $("#song_id").val("-1");
             } else {
                 var displayedSong = $("#song_id").val();
