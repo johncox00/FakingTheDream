@@ -23,8 +23,15 @@
   /- fields_for @song.artist do |artist_fields|
   /  .field
   /    = artist_fields.collection_select("song", "artist_id", Artist.all.collect {|a| [ a.name, a.id ] }, { :include_blank => false })
+  
   .field
+    Lyrics for the Audience
+    %br
     = f.cktext_area :lyric 
+  .field
+    Chart for the Band
+    %br
+    = f.cktext_area :chart
   .actions
     = f.submit 
 

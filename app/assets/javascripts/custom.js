@@ -31,7 +31,13 @@ function updateSong(songId) {
         success: function (result) {
             var song = '<h2>' + result.title + '</h2>';
             song += '<div class="lyric">' + result.lyric + '</div>';
+            var chart = '<h2>' + result.title + '</h2>';
+            chart += '<div class="lyric">' + result.chart + '</div>';
+            if (result.chart == null){ 
+                chart = song;
+            }
             $("#current_song").html(song);
+            $("#current_chart").html(chart);
             $("#song_id").val(songId);
         },
         error: function (foo, result, goo) {
@@ -50,7 +56,7 @@ function CheckCurrentSong () {
         success: function (result) {
             //alert('ID = ' + result.Id);
             if (result.id < 0) {
-                var resting = '<p>We\'re taking 5.</p>';
+                var resting = '<p>We\'re taking 5.</p><p>Stay tuned. When we start again this page will refresh on its own to show you the word.</p>';
                 $("#current_song").html(resting);
                 $("#song_id").val("-1");
             } else {
