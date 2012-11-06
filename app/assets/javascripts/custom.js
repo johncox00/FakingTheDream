@@ -4,8 +4,8 @@
 
 function createRequest(songId) {
     $.ajax({
-        url: "Home/CreateRequest",
-        data: { "SongId": songId, "Requestor_Name":"Anonymous" },
+        url: "create_request",
+        data: { "song_id": songId, "requestor":"Anonymous" },
         dataType: 'json',
         type: "POST",
         cache: false,
@@ -56,7 +56,7 @@ function CheckCurrentSong () {
         success: function (result) {
             //alert('ID = ' + result.Id);
             if (result.id < 0) {
-                var resting = '<p>We\'re taking 5.</p><p>Stay tuned. When we start again this page will refresh on its own to show you the word.</p>';
+                var resting = '<p>We\'re taking 5.</p><p>Stay tuned. When we start again this page will refresh on its own to show you the words.</p>';
                 $("#current_song").html(resting);
                 $("#current_chart").html(resting);
                 $("#song_id").val("-1");

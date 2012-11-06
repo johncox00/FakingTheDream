@@ -1,17 +1,17 @@
+/Render tabs of requests and song list (maybe set list later).
 .row
   .span6
-    %a{href:"javascript:void(0)",onclick:"setCurrentSong(-1)"}  
-      Take a break
-    %table.table
-      - @songs.each do |s|
-        %tr
-          %td
-            = s.title
-          %td
-            = s.artist.name
-          %td 
-            %a{href:"javascript:void(0)",onclick:"setCurrentSong(#{s.id})"} 
-              Set Current
+    %ul.nav.nav-tabs
+      %li
+        %a(href="#list" data-toggle="tab") Song List
+      %li
+        %a(href="#requests" data-toggle="tab") Requests
+
+    .tab-content
+      %div#list.tab-pane.active
+        = render 'song_list'
+      %div#requests.tab-pane
+        = render 'requests'
 
   .span6
     %input#song_id(type="hidden" value="-1")

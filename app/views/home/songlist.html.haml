@@ -8,8 +8,9 @@
   - @songs.each do |s|
     %tr
       %td 
-        = s.title
+        = link_to s.title, "/song/#{s.id}"
       %td 
         = s.artist.name 
       %td 
-        %a(href="/song/#{s.id}") View
+        / %a(href="/song/#{s.id}") View
+        = link_to "Request", "javascript:void(0)", :onclick => "createRequest(#{s.id})", :name => "request-#{s.id}", :id => "request-#{s.id}"

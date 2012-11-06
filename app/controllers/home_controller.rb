@@ -35,4 +35,11 @@ class HomeController < ApplicationController
       format.json { render json: cs }
     end    
   end
+
+  def create_request
+    request = Request.create(song_id: params[:song_id], requestor: params[:requestor])
+    respond_to do |format|
+      format.json { render json: request }
+    end
+  end
 end

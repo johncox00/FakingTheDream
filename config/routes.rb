@@ -18,7 +18,15 @@ FakingTheDream::Application.routes.draw do
   match 'get_current_song_id' => 'home#get_current_song_id'
   match 'admin/get_current_song_id' => 'home#get_current_song_id'
 
+  match 'create_request' => 'home#create_request'
+
   match 'admin/dashboard/set_current_song' => "admin#set_current_song"#. :via => [:post]
+
+  match 'admin/dashboard/ignore_request' => 'admin#ignore_request'
+
+  match 'admin/dashboard/get_requests_grouped_by_song' => 'admin#get_requests_grouped_by_song'
+
+  match 'admin/dashboard/delete_requests_by_song' => 'admin#delete_requests_by_song'
 
   match 'admin/dashboard' => "admin#dashboard"
 

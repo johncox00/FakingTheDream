@@ -21,16 +21,16 @@ function setCurrentSong(songId) {
 
 function ingnoreRequest(requestId) {
     $.ajax({
-        url: "IgnoreRequest",
-        data: { "requestId": requestId },
+        url: "/admin/dashboard/ignore_request",
+        data: { "request_id": requestId },
         dataType: 'json',
         type: "POST",
         cache: false,
         success: function (result) {
-            $(".Request-" + requestId).slideUp('slow', function () {
-                $(".Request-" + requestId).remove();
+            $(".request-" + requestId).slideUp('slow', function () {
+                $(".request-" + requestId).remove();
             });
-            $("#most_popular_requests").load('GetRequestsGroupedBySong');
+            $("#most_popular_requests").load('/admin/dashboard/get_requests_grouped_by_song');
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
@@ -41,20 +41,16 @@ function ingnoreRequest(requestId) {
 
 function setRequestToCurrentSong(songId) {
     $.ajax({
-        url: "DeleteRequestsBySong",
-        data: { "songId": songId },
+        url: "/admin/dashboard/delete_requests_by_song",
+        data: { "song_id": songId },
         dataType: 'json',
         type: "POST",
         cache: false,
         success: function (result) {
-            if (result.Id > 0) {
-                setCurrentSong(songId);
-                $(".Song-" + songId).slideUp('slow', function () {
-                    $(".Song-" + songId).remove();
-                });
-            } else {
-                alert("There was an error!");
-            }
+            setCurrentSong(songId);
+            $(".song-" + songId).slideUp('slow', function () {
+                $(".song-" + songId).remove();
+            });
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
@@ -65,19 +61,15 @@ function setRequestToCurrentSong(songId) {
 
 function ignoreRequestBySong(songId) {
     $.ajax({
-        url: "DeleteRequestsBySong",
+        url: "/admin/dashboard/delete_requests_by_song",
         data: { "songId": songId },
         dataType: 'json',
         type: "POST",
         cache: false,
         success: function (result) {
-            if (result.Id > 0) {
-                $(".Song-" + songId).slideUp('slow', function () {
-                    $(".Song-" + songId).remove();
-                });
-            } else {
-                alert("There was an error!");
-            }
+            $(".song-" + songId).slideUp('slow', function () {
+                $(".song-" + songId).remove();
+            });
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
             alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
