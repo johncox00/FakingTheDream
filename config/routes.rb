@@ -1,5 +1,9 @@
 FakingTheDream::Application.routes.draw do
   
+  resources :tour_dates
+
+  resources :venues
+
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users

@@ -78,7 +78,23 @@ function ignoreRequestBySong(songId) {
     return false;
 }
 
-
+function getGroupedRequests(){
+    $.ajax({
+        url: "/admin/dashboard/get_requests_grouped_by_song",
+        dataType: 'json',
+        type: "GET",
+        cache: false,
+        success: function (result) {
+            $(".song-" + songId).slideUp('slow', function () {
+                $(".song-" + songId).remove();
+            });
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        }
+    });
+    return false;
+}
 
 $(document).ready(function () {
 

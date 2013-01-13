@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  venue: 
+  date_time: 2012-12-24 10:45:02
+  cover: 1.5
+  age_restrictions: MyString
+  notes: MyText
+
+two:
+  venue: 
+  date_time: 2012-12-24 10:45:02
+  cover: 1.5
+  age_restrictions: MyString
+  notes: MyText

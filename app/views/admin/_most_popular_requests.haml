@@ -1,0 +1,22 @@
+
+%table
+  %tr
+    %th
+      Song
+    %th
+      Count
+    %th
+    %th
+  - @grouped_requests.each do |request|
+    %tr{:class => "Song-#{request.song_id}"}
+      %td
+        = request.title
+      %td
+        = request.count
+      %td
+        %a{:href => "javascript:void(0)", :onclick => "ignoreRequestBySong(#{request.song_id})"}
+          Ignore
+      %td
+        %a{:href => "javascript:void(0)", :onclick => "setRequestToCurrentSong(#{request.song_id})"}
+          Set As Current
+

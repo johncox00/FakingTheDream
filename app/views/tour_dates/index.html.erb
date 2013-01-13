@@ -1,0 +1,31 @@
+<h1>Listing tour_dates</h1>
+
+<table>
+  <tr>
+    <th>Venue</th>
+    <th>Date time</th>
+    <th>Cover</th>
+    <th>Age restrictions</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tour_dates.each do |tour_date| %>
+  <tr>
+    <td><%= tour_date.venue %></td>
+    <td><%= tour_date.date_time %></td>
+    <td><%= tour_date.cover %></td>
+    <td><%= tour_date.age_restrictions %></td>
+    <td><%= tour_date.notes %></td>
+    <td><%= link_to 'Show', tour_date %></td>
+    <td><%= link_to 'Edit', edit_tour_date_path(tour_date) %></td>
+    <td><%= link_to 'Destroy', tour_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tour date', new_tour_date_path %>

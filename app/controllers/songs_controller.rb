@@ -1,6 +1,8 @@
 class SongsController < AdminController
   # GET /songs
   # GET /songs.json
+  before_filter :authenticate_user!
+
   def index
     @songs = Song.find(:all, :order => :title)
 

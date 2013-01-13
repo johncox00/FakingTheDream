@@ -6,12 +6,17 @@
         %a.active(href="#list" data-toggle="tab") Song List
       %li
         %a(href="#requests" data-toggle="tab") Requests
+      %li
+        %a(href="#grouped_requests" data-toggle="tab") Most Popular
 
     .tab-content
-      %div#list.tab-pane.active
+      #list.tab-pane.active
         = render 'song_list'
-      %div#requests.tab-pane
+      #requests.tab-pane
         = render 'requests'
+      #grouped_requests.tab-pane
+        #most_popular_requests
+          = render 'most_popular_requests'
 
   .span6
     %input#song_id(type="hidden" value="-1")
@@ -21,3 +26,5 @@
     var id = $("#song_id").val();
     CheckCurrentSong();
     var t = setInterval("CheckCurrentSong()", 5000);
+
+    var songs

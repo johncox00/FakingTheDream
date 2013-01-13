@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Venue:</b>
+  <%= @tour_date.venue %>
+</p>
+
+<p>
+  <b>Date time:</b>
+  <%= @tour_date.date_time %>
+</p>
+
+<p>
+  <b>Cover:</b>
+  <%= @tour_date.cover %>
+</p>
+
+<p>
+  <b>Age restrictions:</b>
+  <%= @tour_date.age_restrictions %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @tour_date.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_tour_date_path(@tour_date) %> |
+<%= link_to 'Back', tour_dates_path %>

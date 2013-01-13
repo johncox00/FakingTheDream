@@ -1,6 +1,8 @@
 class ArtistsController < AdminController
   # GET /artists
   # GET /artists.json
+  before_filter :authenticate_user!
+
   def index
     @artists = Artist.find(:all, :order => :name)
 
