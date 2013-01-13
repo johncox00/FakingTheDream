@@ -35,7 +35,7 @@ GEM
       sass (~> 3.2)
     builder (3.0.4)
     chunky_png (1.2.7)
-    ckeditor (3.7.1)
+    ckeditor (3.7.2)
       mime-types
       orm_adapter
     cocaine (0.4.2)
@@ -165,7 +165,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
-  ckeditor (= 3.7.1)
+  ckeditor (= 3.7.2)
   coffee-rails (~> 3.2.1)
   compass
   compass-rails
