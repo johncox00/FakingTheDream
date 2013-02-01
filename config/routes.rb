@@ -15,6 +15,9 @@ FakingTheDream::Application.routes.draw do
   match 'song/:id' => 'home#song'
 
   match 'current' => 'home#current'
+
+  match 'dates' => 'home#dates'
+
   match 'admin/current' => 'home#current'
 
   match 'songlist' => 'home#songlist'

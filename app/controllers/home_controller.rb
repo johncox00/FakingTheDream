@@ -42,4 +42,6 @@ class HomeController < ApplicationController
       format.json { render json: request }
     end
   end
+
+  def dates; end
 end
