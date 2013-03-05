@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
-gem "ckeditor", "3.7.2"
+gem "ckeditor"
 gem "paperclip"
 
 # To use ActiveModel has_secure_password
