@@ -11,14 +11,15 @@
     %th
     %th
   - @requests.each do |r|
-    %tr{:class => "song-#{r.song.id} request-#{r.id}"}
-      %td
-        = r.song.title
-      %td
-        = r.requestor
-      %td
-        = r.created_at.strftime("%H:%M:%S")
-      %td
-        = link_to("Ignore", "javascript:void(0)", :onclick => "ignoreRequestBySong(#{r.song.id})")
-      %td
-        = link_to("Set as Current", "javascript:void(0)", :onclick => "setRequestToCurrentSong(#{r.song.id})")
+    - if r.song
+      %tr{:class => "song-#{r.song.id} request-#{r.id}"}
+        %td
+          = r.song.title
+        %td
+          = r.requestor
+        %td
+          = r.created_at.strftime("%H:%M:%S")
+        %td
+          = link_to("Ignore", "javascript:void(0)", :onclick => "ignoreRequestBySong(#{r.song.id})")
+        %td
+          = link_to("Set as Current", "javascript:void(0)", :onclick => "setRequestToCurrentSong(#{r.song.id})")
