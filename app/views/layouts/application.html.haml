@@ -24,6 +24,7 @@
     / = favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon'
 
     = javascript_include_tag "application"
+    = javascript_include_tag "http://rt.fakingthedream.com/faye.js"
   %body
 
     .navbar.navbar-fixed-top
@@ -45,13 +46,13 @@
                 = link_to "Dates", "/dates" 
 
     .container
-      .row
+      .row.ninety
         .span6.offset3
           = bootstrap_flash
           = yield
 
       %footer
-        .row
+        .row.bottom
           .span6.offset3
             %p
               = link_to(image_tag('fb_logo.png'),"https://www.facebook.com/FakingTheDream")

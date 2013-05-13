@@ -24,6 +24,7 @@ class AdminController < ApplicationController
  	  else
  	  	new_current = {:title => "(silence)", :lyric => "We're taking 5. BRB."}
  	  end
+    broadcast "/songs/current", new_current
  	  respond_to do |format|
 	     format.json { render json: new_current }
 	   end
@@ -49,5 +50,12 @@ class AdminController < ApplicationController
     respond_to do |format|
       format.json { render json: Request.destroy_all(:song_id => params[:song_id]) }
     end
+  end
+
+  def broadcast(channel, data)
+    puts "BROCASTING NOW!"
+    message = {:channel => channel, :data => data, :ext => {:auth_token => FAYE_TOKEN}}
+    uri = URI.parse("http://ftd-rt.herokuapp.com/faye")
+    Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end 

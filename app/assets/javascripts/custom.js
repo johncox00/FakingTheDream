@@ -1,5 +1,99 @@
 ﻿/// <reference path="jquery-ui-1.8.11.js" />
 /// <reference path="jquery-1.5.1-vsdoc.js" />
+$(function() {
+    var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
+    //Faye.Transport.WebSocket.isUsable = function(_,c) { c(false) };
+    faye.disable('websocket');
+    Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
+    faye.setHeader('Access-Control-Allow-Origin', '*');
+    faye.connect();
+
+
+    faye.subscribe('/songs/current', function (result) {
+      //$("#chat").append("<li>" + data.body + "</li>");
+      if (result.title == "light_show"){
+        eval(result.command);
+      } else {
+        clear_light_show();
+        var song = '<h2>' + result.title + '</h2>';
+        song += '<div class="lyric">' + result.lyric + '</div>';
+        var chart = '<h2>' + result.title + '</h2>';
+        chart += '<div class="lyric">' + result.chart + '</div>';
+        if (result.chart == null){ 
+          chart = song;
+        }
+        $("#current_song").html(song);
+        $("#current_chart").html(chart);
+        $("#song_id").val(songId);
+      }
+      
+    });
+
+    
+    //test_pump();
+});
+
+function test_pump(){
+    // setInterval('test_pump()', 4000);
+    // light_show_change("#000000", "Let's", "#ffffff", "#current_song");
+    // setTimeout('light_show_change("#ffffff", "go", "#000000", "#current_song")', 1000);
+    // setTimeout('light_show_change("#000000", "crazy!", "#ffffff", "#current_song")', 2000);
+    // setTimeout('light_show_change("#ffffff", "crazy!", "#000000", "#current_song")', 3000);
+    colorful_strobe(300,"#current_song");
+}
+
+function light_show_change(bg_color, text, text_color, target_div) {
+    // .css("color", "#CDCDCD");
+    $('body').css('background-color',bg_color);
+    $(target_div).css('color', text_color);
+    //$(target_div).css('width', '100%');
+    //$(target_div).css('min-height', '570px');
+    $(target_div).css('text-align', 'center');
+
+    //$(target_div).css('color:' + text_color + ';width:100%;min-height:100%;text-align:center;');
+    $(target_div).html('<h1>' + text + '</h1>');
+}
+
+function clear_light_show(){
+  $('body').css('background-color',"#555");
+  $(target_div).css('text-align', 'left');
+}
+
+function random_color(){
+    digits = ['0','1','2','3','4','5','6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+    red = digits[Math.floor(Math.random() * 16)] + digits[Math.floor(Math.random() * 16)];
+    green = digits[Math.floor(Math.random() * 16)] + digits[Math.floor(Math.random() * 16)];
+    blue = digits[Math.floor(Math.random() * 16)] + digits[Math.floor(Math.random() * 16)];
+    return '#' + red + blue + green;
+}
+
+function strobe(frequency, target_div){
+    fd2 = frequency/2.0;
+    call = 'light_show_change("#000000","","#000000","' + target_div + '")';
+    strobe_timer1 = setInterval(call, frequency);
+    call2 = 'light_show_change("#ffffff","","#ffffff","' + target_div + '")';
+    timeout_call = 'strobe_timer2 = setInterval(call2, ' + frequency + ')';
+    setTimeout(timeout_call, fd2);
+}
+
+function colorful_stream(frequency, target_div){
+    fd2 = frequency/2.0;
+    color = random_color();
+    light_show_change(color,"","#000000",target_div);
+    timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
+    strobe_timer = setTimeout(timeout_call, fd2);
+}
+
+function colorful_strobe(frequency, target_div){
+    fd2 = frequency/2.0;
+    color = random_color();
+    light_show_change(color,"","#000000",target_div);
+    timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
+    strobe_timer = setTimeout(timeout_call, frequency);
+    call2 = 'light_show_change("#000000","","#000000","' + target_div + '")';
+    timeout_call = 'strobe_timer2 = setInterval(call2, ' + frequency + ')';
+    setTimeout(timeout_call, fd2);
+}
 
 
 function createRequest(songId) {

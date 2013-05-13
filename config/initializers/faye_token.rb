@@ -1,0 +1,1 @@
+FAYE_TOKEN = "fake_it_with_me"
