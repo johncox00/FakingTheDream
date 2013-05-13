@@ -61,7 +61,7 @@ class AdminController < ApplicationController
 
   def light_show(id)
     show = Song.find(id).lightshow
-    do
+    begin 
       show.light_show_segments.each do |segment|
         b_o = {title: "lightshow", details: segment.attributes}
         broadcast "/songs/current", b_o
