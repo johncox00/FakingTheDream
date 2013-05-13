@@ -55,7 +55,7 @@ class AdminController < ApplicationController
   def broadcast(channel, data)
     puts "BROCASTING NOW!"
     message = {:channel => channel, :data => data, :ext => {:auth_token => FAYE_TOKEN}}
-    uri = URI.parse("http://ftd-rt.herokuapp.com/faye")
+    uri = URI.parse("http://rt.fakingthedream.com/faye")
     Net::HTTP.post_form(uri, :message => message.to_json)
   end
 end 
