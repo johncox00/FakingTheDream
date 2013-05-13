@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  effect: MyString
+  duration: 1
+  sort_order: 1
+  text: MyString
+  strobe_duration: 1
+  color_hex: MyString
+
+two:
+  effect: MyString
+  duration: 1
+  sort_order: 1
+  text: MyString
+  strobe_duration: 1
+  color_hex: MyString

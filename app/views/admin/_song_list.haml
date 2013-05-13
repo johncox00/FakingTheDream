@@ -11,3 +11,7 @@
       %td 
         %a{href:"javascript:void(0)",onclick:"setCurrentSong(#{s.id})"} 
           Set Current
+      %td
+        - if s.lightshow 
+          %a{href:"javascript:void(0)",onclick:"startLightShow(#{s.id})"} 
+            Start Light Show

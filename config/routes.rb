@@ -1,5 +1,8 @@
 FakingTheDream::Application.routes.draw do
   
+  
+
+
   resources :tour_dates
 
   resources :venues
@@ -28,6 +31,7 @@ FakingTheDream::Application.routes.draw do
   match 'create_request' => 'home#create_request'
 
   match 'admin/dashboard/set_current_song' => "admin#set_current_song"#. :via => [:post]
+  match '/admin/dashboard/start_light_show' => "admin#start_light_show"
 
   match 'admin/dashboard/ignore_request' => 'admin#ignore_request'
 
@@ -40,6 +44,15 @@ FakingTheDream::Application.routes.draw do
   resources :songs,:path => "/admin/songs"
 
   resources :artists, :path => "/admin/artists"
+
+  resources :lightshows, :path => "/admin/lightshows"
+
+
+  resources :light_show_segments, :path => "/admin/light_show_segments"
+
+
+  resources :light_effects, :path => "/admin/light_effects"
+
 
   resources :tags
 

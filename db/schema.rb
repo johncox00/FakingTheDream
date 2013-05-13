@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224174635) do
+ActiveRecord::Schema.define(:version => 20130513221925) do
 
   create_table "artists", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,32 @@ ActiveRecord::Schema.define(:version => 20121224174635) do
     t.integer "song_id"
   end
 
+  create_table "light_effects", :force => true do |t|
+    t.string   "name"
+    t.string   "meta"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "light_show_segments", :force => true do |t|
+    t.string   "effect"
+    t.integer  "duration"
+    t.integer  "sort_order"
+    t.string   "text"
+    t.integer  "strobe_duration"
+    t.string   "color_hex"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "lightshow_id"
+    t.string   "text_color"
+  end
+
+  create_table "lightshows", :force => true do |t|
+    t.integer  "song_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "requests", :force => true do |t|
     t.string   "requestor"
     t.datetime "created_at", :null => false
@@ -57,10 +83,11 @@ ActiveRecord::Schema.define(:version => 20121224174635) do
     t.string   "title"
     t.text     "lyric"
     t.integer  "artist_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.boolean  "current_song"
     t.text     "chart"
+    t.boolean  "start_light_show"
   end
 
   add_index "songs", ["artist_id"], :name => "index_songs_on_artist_id"

@@ -1,0 +1,23 @@
+<h1>Lightshows</h1>
+
+<table>
+  <tr>
+    <th>Song</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lightshows.each do |lightshow| %>
+  <tr>
+    <td><%= link_to lightshow.song.title, edit_lightshow_path(lightshow) %></td>
+    <td> </td>
+    <td> </td>
+    <td><%= link_to 'Destroy', lightshow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lightshow', new_lightshow_path %>

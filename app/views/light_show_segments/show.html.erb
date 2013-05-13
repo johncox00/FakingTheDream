@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Effect:</b>
+  <%= @light_show_segment.effect %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @light_show_segment.duration %>
+</p>
+
+<p>
+  <b>Sort order:</b>
+  <%= @light_show_segment.sort_order %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @light_show_segment.text %>
+</p>
+
+<p>
+  <b>Strobe duration:</b>
+  <%= @light_show_segment.strobe_duration %>
+</p>
+
+<p>
+  <b>Color hex:</b>
+  <%= @light_show_segment.color_hex %>
+</p>
+
+
+<%= link_to 'Edit', edit_light_show_segment_path(@light_show_segment) %> |
+<%= link_to 'Back', light_show_segments_path %>

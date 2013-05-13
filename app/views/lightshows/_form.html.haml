@@ -1,0 +1,60 @@
+= nested_form_for(@lightshow) do |f| 
+  - if @lightshow.errors.any? 
+    #error_explanation
+      %h2
+        = "#{pluralize(@lightshow.errors.count, "error")} prohibited this lightshow from being saved:"
+
+      %ul
+        - @lightshow.errors.full_messages.each do |msg| 
+          %li
+            = msg
+  .field
+    = f.label :song
+    - if @lightshow.song
+      = f.select :song_id, options_from_collection_for_select(Song.all, "id", "title", @lightshow.song.id)
+    - else
+      = f.select :song_id, options_from_collection_for_select(Song.all, "id", "title")
+
+  = f.fields_for :light_show_segments do |lss_form| 
+    .well.black_text.pull-left
+      .field
+        = lss_form.label :effect
+        - if lss_form.object.effect
+          = lss_form.select :effect, options_for_select(Lightshow::EFFECT_OPTIONS, lss_form.object.effect)
+        - else
+          = lss_form.select :effect, options_for_select(Lightshow::EFFECT_OPTIONS)
+      .row
+        .span2
+          .field
+            = lss_form.label "Total segment duration (s)"
+            = lss_form.number_field :duration, :class => "input-small" 
+        .span3
+          .field
+            = lss_form.label "Strobe duration (ms)"
+            = lss_form.number_field :strobe_duration, :class => "input-small" 
+      .row
+        .span2
+          .field
+            = lss_form.label :text
+            = lss_form.text_field :text, :class => "input-small"  
+        .span3
+          .field
+            = lss_form.label :text_color 
+            = lss_form.text_field :text_color , :class => "input-small"
+      .row
+        .span2
+          .field
+            = lss_form.label :color_hex 
+            = lss_form.text_field :color_hex , :class => "input-small"
+        .span3
+          .field
+            = lss_form.label :sort_order
+            = lss_form.number_field :sort_order, :class => "input-small"
+      .pull-right
+        = lss_form.link_to_remove "Remove this segment"
+  .clearfix
+  %p
+    = f.link_to_add "Add a segment", :light_show_segments 
+  .actions
+    = f.submit 
+

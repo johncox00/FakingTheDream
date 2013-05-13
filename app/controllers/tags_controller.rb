@@ -1,6 +1,8 @@
 class TagsController < AdminController
   # GET /tags
   # GET /tags.json
+  before_filter :authenticate_user!
+  
   def index
     @tags = Tag.all
 

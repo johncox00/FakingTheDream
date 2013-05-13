@@ -1,0 +1,25 @@
+<%= form_for(@light_effect) do |f| %>
+  <% if @light_effect.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@light_effect.errors.count, "error") %> prohibited this light_effect from being saved:</h2>
+
+      <ul>
+      <% @light_effect.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :meta %><br />
+    <%= f.text_field :meta %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
