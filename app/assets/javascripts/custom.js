@@ -11,11 +11,10 @@ $(function() {
 
     faye.subscribe('/songs/current', function (result) {
       //$("#chat").append("<li>" + data.body + "</li>");
-      alert("it:" + result);
       if (result.title == "light_show"){
         eval(result.command);
       } else {
-        clear_light_show();
+        clear_light_show("#current_song");
         var song = '<h2>' + result.title + '</h2>';
         song += '<div class="lyric">' + result.lyric + '</div>';
         var chart = '<h2>' + result.title + '</h2>';
@@ -55,7 +54,7 @@ function light_show_change(bg_color, text, text_color, target_div) {
     $(target_div).html('<h1>' + text + '</h1>');
 }
 
-function clear_light_show(){
+function clear_light_show(target_div){
   $('body').css('background-color',"#555");
   $(target_div).css('text-align', 'left');
 }
