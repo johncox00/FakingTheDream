@@ -1,13 +1,13 @@
 %div#current_song
   - if @current_song
     %h2
-      @current_song.title
+      = @current_song.title
     .lyric
-      @current_song.lyric
+      = raw(@current_song.lyric)
   - else
     Get ready!
 
-%input#song_id{:type=>"hidden" :value=>"#{@current_song ? @current_song.id : -1}"}
+%input#song_id{:type=>"hidden", :value=>"#{@current_song ? @current_song.id : -1}"}
 
 / :javascript
 /     var id = $("#song_id").val();
