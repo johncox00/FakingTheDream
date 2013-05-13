@@ -11,6 +11,7 @@ $(function() {
 
     faye.subscribe('/songs/current', function (result) {
       //$("#chat").append("<li>" + data.body + "</li>");
+      alert(result);
       if (result.title == "light_show"){
         eval(result.command);
       } else {
