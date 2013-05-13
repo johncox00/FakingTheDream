@@ -11,6 +11,7 @@ class AdminController < ApplicationController
 	end
 
 	def set_current_song
+    stop_light_show
  	  old_currents = Song.where(:current_song => true)
  	  old_currents.each do |s|
  	  	s.current_song = false
@@ -29,6 +30,48 @@ class AdminController < ApplicationController
 	     format.json { render json: new_current }
 	   end
 	end
+
+  def start_light_show
+    old_currents = Song.where(:start_light_show => true)
+    old_currents.each do |s|
+      s.start_light_show = false
+      s.save
+    end
+    id = params[:id].to_i
+    if id > 0 
+      new_current = Song.find(id)
+      new_current.start_light_show = true
+      new_current.save
+    end
+    #INITIATE THE LIGHT SHOW
+    Thread.new{light_show(id)}
+    # broadcast "/songs/current", new_current
+    respond_to do |format|
+       format.json { render json: new_current }
+     end
+  end
+
+  def stop_light_show
+    old_currents = Song.where(:start_light_show => true)
+    old_currents.each do |s|
+      s.start_light_show = false
+      s.save
+    end
+  end
+
+  def light_show(id)
+    show = Song.find(id).lightshow
+    do
+      show.light_show_segments.each do |segment|
+        b_o = {title: "lightshow", details: segment.attributes}
+        broadcast "/songs/current", b_o
+        total_duration = segment.duration * 1000
+        sleep(total_duration)
+      end
+    end while Song.find(id).start_light_show
+    new_current = Song.find(id)
+    broadcast "/songs/current", new_current
+  end
 
   def ignore_request
     respond_to do |format|

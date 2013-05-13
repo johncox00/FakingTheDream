@@ -97,6 +97,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.21)
     multi_json (1.6.1)
+    nested_form (0.3.1)
     netrc (0.7.7)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
@@ -180,6 +181,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   less-rails
+  nested_form
   paperclip
   pg
   rails (= 3.2.11)

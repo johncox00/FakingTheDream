@@ -48,6 +48,8 @@
                 = link_to "Venues", venues_path
               %li
                 = link_to "Tour Dates", tour_dates_path
+              %li
+                = link_to "Light Shows", lightshows_path
             .pull-right
               = link_to('Logout', destroy_user_session_path, :method=>'delete') if user_signed_in?
     .container

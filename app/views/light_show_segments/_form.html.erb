@@ -1,0 +1,41 @@
+<%= form_for(@light_show_segment) do |f| %>
+  <% if @light_show_segment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@light_show_segment.errors.count, "error") %> prohibited this light_show_segment from being saved:</h2>
+
+      <ul>
+      <% @light_show_segment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :effect %><br />
+    <%= f.text_field :effect %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :sort_order %><br />
+    <%= f.number_field :sort_order %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_field :text %>
+  </div>
+  <div class="field">
+    <%= f.label :strobe_duration %><br />
+    <%= f.number_field :strobe_duration %>
+  </div>
+  <div class="field">
+    <%= f.label :color_hex %><br />
+    <%= f.text_field :color_hex %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

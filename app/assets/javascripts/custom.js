@@ -11,8 +11,8 @@ $(function() {
 
     faye.subscribe('/songs/current', function (result) {
       //$("#chat").append("<li>" + data.body + "</li>");
-      if (result.title == "light_show"){
-        eval(result.command);
+      if (result.title == "lightshow"){
+        process_lightshow(result.details);
       } else {
         clear_light_show();
         var song = '<h2>' + result.title + '</h2>';
@@ -40,6 +40,31 @@ function test_pump(){
     // setTimeout('light_show_change("#000000", "crazy!", "#ffffff", "#current_song")', 2000);
     // setTimeout('light_show_change("#ffffff", "crazy!", "#000000", "#current_song")', 3000);
     colorful_strobe(300,"#current_song");
+}
+
+//EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
+function process_lightshow(details){
+    effect = details.effect
+    target_div = "#current_song";
+    switch(effect){
+        case "Random Color":
+          color = random_color();
+          light_show_change(color, details.text, details.text_color, target_div);
+          break;
+        case "Specific Color":
+          color = '#' + details.hex_color;
+          light_show_change(color, details.text, details.text_color, target_div);
+          break;
+        case "BW Strobe":
+          strobe(details.strobe_duration, target_div);
+          break;
+        case "Color Strobe":
+          colorful_strobe(details.strobe_duration, target_div);
+          break;
+        case "Color Stream":
+          colorful_stream(details.strobe_duration, target_div);
+          break;
+    }
 }
 
 function light_show_change(bg_color, text, text_color, target_div) {

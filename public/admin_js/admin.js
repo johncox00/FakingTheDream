@@ -19,6 +19,23 @@ function setCurrentSong(songId) {
     return false;
 }
 
+function startLightShow(songId) {
+    $.ajax({
+        url: "/admin/dashboard/start_light_show",
+        data: { "id": songId },
+        dataType: 'json',
+        type: "POST",
+        cache: false,
+        success: function (result) {
+            alert("Light show started!")
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('status:' + XMLHttpRequest.status + ', status text: ' + XMLHttpRequest.statusText);
+        }
+    });
+    return false;
+}
+
 function ingnoreRequest(requestId) {
     $.ajax({
         url: "/admin/dashboard/ignore_request",

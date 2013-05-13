@@ -1,0 +1,33 @@
+<h1>Listing light_show_segments</h1>
+
+<table>
+  <tr>
+    <th>Effect</th>
+    <th>Duration</th>
+    <th>Sort order</th>
+    <th>Text</th>
+    <th>Strobe duration</th>
+    <th>Color hex</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @light_show_segments.each do |light_show_segment| %>
+  <tr>
+    <td><%= light_show_segment.effect %></td>
+    <td><%= light_show_segment.duration %></td>
+    <td><%= light_show_segment.sort_order %></td>
+    <td><%= light_show_segment.text %></td>
+    <td><%= light_show_segment.strobe_duration %></td>
+    <td><%= light_show_segment.color_hex %></td>
+    <td><%= link_to 'Show', light_show_segment %></td>
+    <td><%= link_to 'Edit', edit_light_show_segment_path(light_show_segment) %></td>
+    <td><%= link_to 'Destroy', light_show_segment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Light show segment', new_light_show_segment_path %>
