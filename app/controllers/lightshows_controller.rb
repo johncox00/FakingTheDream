@@ -42,7 +42,7 @@ class LightshowsController < AdminController
   # POST /lightshows
   # POST /lightshows.json
   def create
-    @song = Song.find(params[:lightshow].delete(:song))
+    @song = Song.find(params[:lightshow].delete(:song_id))
     @lightshow = Lightshow.new(params[:lightshow])
     @lightshow.song = @song
     respond_to do |format|
