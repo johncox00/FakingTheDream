@@ -33,19 +33,13 @@ $(function() {
     //test_pump();
 });
 
-function test_pump(){
-    // setInterval('test_pump()', 4000);
-    // light_show_change("#000000", "Let's", "#ffffff", "#current_song");
-    // setTimeout('light_show_change("#ffffff", "go", "#000000", "#current_song")', 1000);
-    // setTimeout('light_show_change("#000000", "crazy!", "#ffffff", "#current_song")', 2000);
-    // setTimeout('light_show_change("#ffffff", "crazy!", "#000000", "#current_song")', 3000);
-    colorful_strobe(300,"#current_song");
-}
-
 //EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
 function process_lightshow(details){
     effect = details.effect
     target_div = "#current_song";
+    clearInterval(strobe_timer);
+    clearInterval(strobe_timer1);
+    clearInterval(strobe_timer2);
     switch(effect){
         case "Random Color":
           color = random_color();

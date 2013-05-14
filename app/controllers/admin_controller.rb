@@ -66,7 +66,7 @@ class AdminController < ApplicationController
         b_o = {title: "lightshow", details: segment.attributes}
         broadcast "/songs/current", b_o
         total_duration = segment.duration
-        sleep(total_duration)
+        sleep(total_duration.seconds)
       end
     end while Song.find(id).start_light_show
     new_current = Song.find(id)
