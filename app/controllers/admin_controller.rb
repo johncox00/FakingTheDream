@@ -65,7 +65,7 @@ class AdminController < ApplicationController
       show.light_show_segments.each do |segment|
         b_o = {title: "lightshow", details: segment.attributes}
         broadcast "/songs/current", b_o
-        total_duration = segment.duration * 1000
+        total_duration = segment.duration
         sleep(total_duration)
       end
     end while Song.find(id).start_light_show
