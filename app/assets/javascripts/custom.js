@@ -15,6 +15,7 @@ $(function() {
         process_lightshow(result.details);
       } else {
         clear_light_show("#current_song");
+        var songId = result.id
         var song = '<h2>' + result.title + '</h2>';
         song += '<div class="lyric">' + result.lyric + '</div>';
         var chart = '<h2>' + result.title + '</h2>';
@@ -23,7 +24,7 @@ $(function() {
           chart = song;
         }
         $("#current_song").html(song);
-        $("#current_chart").html(chart);
+        $("#current_chart").html(song);
         $("#song_id").val(songId);
       }
       
@@ -52,6 +53,7 @@ function make_interval(method, time){
 
 function clear_timers(){
   for (key in timers){
+    console.log(key);
     clearTimeout(key);
     clearInterval(key);
   }
@@ -97,6 +99,7 @@ function light_show_change(bg_color, text, text_color, target_div) {
 }
 
 function clear_light_show(target_div){
+  clear_timers();
   $('body').css('background-color',"#555");
   $(target_div).css('text-align', 'left');
 }
