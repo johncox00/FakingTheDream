@@ -43,11 +43,13 @@ function random_name(){
 
 function make_timeout(method, time){
   name = random_name();
+  console.log('creating timeout: ' + name);
   timers[name] = setTimeout(method, time);
 }
 
 function make_interval(method, time){
   name = random_name();
+  console.log('creating interval: ' + name);
   timers[name] = setInterval(method, time);
 }
 
