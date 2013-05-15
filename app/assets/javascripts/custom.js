@@ -114,25 +114,30 @@ function strobe(frequency, target_div){
     call = 'light_show_change("#000000","","#000000","' + target_div + '")';
     make_interval(call, frequency);
     call2 = 'light_show_change("#ffffff","","#ffffff","' + target_div + '")';
-    timeout_call = 'strobe_timer2 = setInterval(call2, ' + frequency + ')';
+    timeout_call = 'make_interval(call2, ' + frequency + ')';
     make_timeout(timeout_call, fd2);
 }
 
 function colorful_stream(frequency, target_div){
     color = random_color();
     light_show_change(color,"","#000000",target_div);
-    timeout_call = 'colorful_stream(' + frequency + ', "' + target_div + '")';
-    make_timeout(timeout_call, frequency);
+    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div'"")';
+    make_interval(interval_call, frequency);
+    //timeout_call = 'colorful_stream(' + frequency + ', "' + target_div + '")';
+    //make_timeout(timeout_call, frequency);
 }
 
 function colorful_strobe(frequency, target_div){
     fd2 = frequency/2.0;
     color = random_color();
     light_show_change(color,"","#000000",target_div);
-    timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
-    make_timeout(timeout_call, frequency);
+    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div'"")';
+    make_interval(interval_call, frequency);
+    // timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
+    // make_timeout(timeout_call, frequency);
     call2 = 'light_show_change("#000000","","#000000","' + target_div + '")';
-    make_timeout(call2, fd2);
+    interval2 = 'make_interval(' + call2 + ',' + frequency + ')';
+    make_timeout(interval2, fd2);
 }
 
 
