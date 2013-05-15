@@ -30,11 +30,12 @@ $(function() {
     });
 
     
-    var strobe_timer = false;
-    var strobe_timer1 = false;
-    var strobe_timer2 = false;
+    
 
 });
+var strobe_timer = false;
+var strobe_timer1 = false;
+var strobe_timer2 = false;
 
 //EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
 function process_lightshow(details){
