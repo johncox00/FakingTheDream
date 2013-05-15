@@ -57,9 +57,9 @@ function make_interval(method, time){
 
 function clear_timers(){
   for (key in timers){
-    console.log(key);
-    clearTimeout(key);
-    clearInterval(key);
+    console.log(timers[key]);
+    clearTimeout(timers[key]);
+    clearInterval(timers[key]);
     delete timers[key];
   }
 }
