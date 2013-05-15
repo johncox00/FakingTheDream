@@ -1,4 +1,5 @@
 /%audio{:src=>"loop.wav", :loop=>"loop", :autoplay => "autoplay"}
+audio_tag("loop.mp3", :autoplay => true, :controls => false, :loop => true)
 %div#current_song
   - if @current_song
     %h2
