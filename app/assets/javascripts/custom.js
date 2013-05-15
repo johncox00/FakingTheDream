@@ -42,12 +42,15 @@ function process_lightshow(details){
     target_div = "#current_song";
     if(strobe_timer){
         clearInterval(strobe_timer);
+        strobe_timer = false;
     }
     if(strobe_timer1){
         clearInterval(strobe_timer1);
+        strobe_timer1 = false;
     }
     if(strobe_timer2){
         clearInterval(strobe_timer2);
+        strobe_timer2 = false;
     }
     switch(effect){
         case "Random Color":
