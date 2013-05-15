@@ -42,7 +42,9 @@ function random_name(){
 }
 
 function make_timeout(method, time){
-  name = random_name();
+  digits = ['a', 'b', 'c', 'd', 'e', 'f'];
+  prefix = digits[Math.floor(Math.random() * 6)] + digits[Math.floor(Math.random() * 6)];
+  name = prefix + Date.now();
   console.log('creating timeout: ' + name);
   timers[name] = setTimeout(method, time);
 }
