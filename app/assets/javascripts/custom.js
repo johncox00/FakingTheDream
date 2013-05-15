@@ -33,26 +33,36 @@ $(function() {
     
 
 });
-var strobe_timer = false;
-var strobe_timer1 = false;
-var strobe_timer2 = false;
+var timers = new Array();
+
+function random_name(){
+    var name = random_color() + Date.now();
+    return name;
+}
+
+function make_timeout(method, time){
+  name = random_name();
+  timers[name] = setTimeout(method, time);
+}
+
+function make_interval(method, time){
+  name = random_name();
+  timers[name] = setInterval(method, time);
+}
+
+function clear_timers(){
+  for (key in timers){
+    clearTimeout(key);
+    clearInterval(key);
+  }
+  timers = new Array();
+}
 
 //EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
 function process_lightshow(details){
     effect = details.effect
     target_div = "#current_song";
-    if(strobe_timer){
-        clearInterval(strobe_timer);
-        strobe_timer = false;
-    }
-    if(strobe_timer1){
-        clearInterval(strobe_timer1);
-        strobe_timer1 = false;
-    }
-    if(strobe_timer2){
-        clearInterval(strobe_timer2);
-        strobe_timer2 = false;
-    }
+    clear_timers();
     switch(effect){
         case "Random Color":
           color = random_color();
@@ -102,10 +112,10 @@ function random_color(){
 function strobe(frequency, target_div){
     fd2 = frequency/2.0;
     call = 'light_show_change("#000000","","#000000","' + target_div + '")';
-    strobe_timer1 = setInterval(call, frequency);
+    make_interval(call, frequency);
     call2 = 'light_show_change("#ffffff","","#ffffff","' + target_div + '")';
     timeout_call = 'strobe_timer2 = setInterval(call2, ' + frequency + ')';
-    setTimeout(timeout_call, fd2);
+    make_timeout(timeout_call, fd2);
 }
 
 function colorful_stream(frequency, target_div){
@@ -113,7 +123,7 @@ function colorful_stream(frequency, target_div){
     color = random_color();
     light_show_change(color,"","#000000",target_div);
     timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
-    strobe_timer = setTimeout(timeout_call, fd2);
+    make_timeout(timeout_call, fd2);
 }
 
 function colorful_strobe(frequency, target_div){
@@ -122,10 +132,10 @@ function colorful_strobe(frequency, target_div){
     light_show_change(color,"","#000000",target_div);
     timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
     //PROBLEM!!:::
-    strobe_timer = setTimeout(timeout_call, frequency);
+    make_timeout(timeout_call, frequency);
     call2 = 'light_show_change("#000000","","#000000","' + target_div + '")';
     timeout_call = 'strobe_timer2 = setInterval(call2, ' + frequency + ')';
-    setTimeout(timeout_call, fd2);
+    make_timeout(timeout_call, fd2);
 }
 
 
