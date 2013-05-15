@@ -121,7 +121,7 @@ function strobe(frequency, target_div){
 function colorful_stream(frequency, target_div){
     color = random_color();
     light_show_change(color,"","#000000",target_div);
-    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div'")';
+    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div + '")';
     make_interval(interval_call, frequency);
     //timeout_call = 'colorful_stream(' + frequency + ', "' + target_div + '")';
     //make_timeout(timeout_call, frequency);
@@ -131,7 +131,7 @@ function colorful_strobe(frequency, target_div){
     fd2 = frequency/2.0;
     color = random_color();
     light_show_change(color,"","#000000",target_div);
-    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div'")';
+    interval_call = 'light_show_change(random_color(),"","#000000","' + target_div + '")';
     make_interval(interval_call, frequency);
     // timeout_call = 'colorful_strobe(' + frequency + ', "' + target_div + '")';
     // make_timeout(timeout_call, frequency);
