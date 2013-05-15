@@ -30,16 +30,25 @@ $(function() {
     });
 
     
-    //test_pump();
+    var strobe_timer = false;
+    var strobe_timer1 = false;
+    var strobe_timer2 = false;
+
 });
 
 //EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
 function process_lightshow(details){
     effect = details.effect
     target_div = "#current_song";
-    clearInterval(strobe_timer);
-    clearInterval(strobe_timer1);
-    clearInterval(strobe_timer2);
+    if(strobe_timer){
+        clearInterval(strobe_timer);
+    }
+    if(strobe_timer1){
+        clearInterval(strobe_timer1);
+    }
+    if(strobe_timer2){
+        clearInterval(strobe_timer2);
+    }
     switch(effect){
         case "Random Color":
           color = random_color();
