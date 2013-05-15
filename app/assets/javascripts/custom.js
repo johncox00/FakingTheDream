@@ -58,8 +58,8 @@ function clear_timers(){
     console.log(key);
     clearTimeout(key);
     clearInterval(key);
+    delete timers[key];
   }
-  timers = new Array();
 }
 
 //EFFECT_OPTIONS = ["Random Color", "Specific Color", "BW Strobe", "Color Strobe", "Color Stream"]
