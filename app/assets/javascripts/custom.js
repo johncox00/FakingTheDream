@@ -91,6 +91,11 @@ function process_lightshow(details){
     }
 }
 
+function play_audio(){
+    var audio = document.getElementById('audio');
+    audio.play();
+}
+
 function light_show_change(bg_color, text, text_color, target_div) {
     // .css("color", "#CDCDCD");
     $('body').css('background-color',bg_color);
