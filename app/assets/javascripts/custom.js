@@ -91,18 +91,6 @@ function process_lightshow(details){
     }
 }
 
-function actuateLink(link)
-{
-    var dispatch = document.createEvent("HTMLEvents")
-    dispatch.initEvent("click", true, true);
-    link.dispatchEvent(dispatch);
-}
-
-function play_audio(){
-    var audio = document.getElementById('audio');
-    audio.play();
-    return false;
-}
 
 function light_show_change(bg_color, text, text_color, target_div) {
     // .css("color", "#CDCDCD");

@@ -1,5 +1,4 @@
-%audio#audio{:controls => false, :loop => true, :src => "/noise.mp3"}
-%a#play_link{:onclick => 'play_audio()'}
+%audio#audio{:controls => false, :loop => true, :src => "/noise.mp3", :preload => true, :autoplay => true}
 
 %div#current_song
   - if @current_song
@@ -16,7 +15,6 @@
     //var id = $("#song_id").val();
     //CheckCurrentSong();
     //var t = setInterval("CheckCurrentSong()", 5000);
-  actuateLink(document.getElementById('play_link'));
 
   $(function() {
 
