@@ -69,8 +69,8 @@ class AdminController < ApplicationController
         sleep(total_duration.seconds)
       end
     end while Song.find(id).start_light_show
-    new_current = Song.find(id)
-    broadcast "/songs/current", new_current
+    # new_current = Song.find(id)
+    # broadcast "/songs/current", new_current
   end
 
   def ignore_request
