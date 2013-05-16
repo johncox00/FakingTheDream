@@ -123,6 +123,7 @@ function actuateLink(link)
 function play_audio(){
     var audio = document.getElementById('audio');
     audio.play();
+    return false;
 }
 
 function light_show_change(bg_color, text, text_color, target_div) {
