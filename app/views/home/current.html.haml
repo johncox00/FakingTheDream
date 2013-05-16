@@ -30,16 +30,16 @@
         process_lightshow(result.details);
       } else {
         clear_light_show("#current_song");
-        var songId = result.id
+        var songId = result.id;
         var song = '<h2>' + result.title + '</h2>';
         song += '<div class="lyric">' + result.lyric + '</div>';
-        var chart = '<h2>' + result.title + '</h2>';
-        chart += '<div class="lyric">' + result.chart + '</div>';
-        if (result.chart == null){ 
-          chart = song;
-        }
+        //var chart = '<h2>' + result.title + '</h2>';
+        //chart += '<div class="lyric">' + result.chart + '</div>';
+        //if (result.chart == null){ 
+        //  chart = song;
+        //}
         $("#current_song").html(song);
-        $("#current_chart").html(song);
+        //$("#current_chart").html(song);
         $("#song_id").val(songId);
       }
       

@@ -1,35 +1,6 @@
 ﻿/// <reference path="jquery-ui-1.8.11.js" />
 /// <reference path="jquery-1.5.1-vsdoc.js" />
-// $(function() {
-//     var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
-//     //Faye.Transport.WebSocket.isUsable = function(_,c) { c(false) };
-//     faye.disable('websocket');
-//     Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
-//     faye.setHeader('Access-Control-Allow-Origin', '*');
-//     faye.connect();
 
-
-//     faye.subscribe('/songs/current', function (result) {
-//       //$("#chat").append("<li>" + data.body + "</li>");
-//       if (result.title == "lightshow"){
-//         process_lightshow(result.details);
-//       } else {
-//         clear_light_show("#current_song");
-//         var songId = result.id
-//         var song = '<h2>' + result.title + '</h2>';
-//         song += '<div class="lyric">' + result.lyric + '</div>';
-//         var chart = '<h2>' + result.title + '</h2>';
-//         chart += '<div class="lyric">' + result.chart + '</div>';
-//         if (result.chart == null){ 
-//           chart = song;
-//         }
-//         $("#current_song").html(song);
-//         $("#current_chart").html(song);
-//         $("#song_id").val(songId);
-//       }
-      
-//     });
-// });
 var timers = new Array();
 
 function random_name(){
@@ -41,19 +12,16 @@ function random_name(){
 
 function make_timeout(method, time){
   name = random_name();
-  console.log('creating timeout: ' + name);
   timers[name] = setTimeout(method, time);
 }
 
 function make_interval(method, time){
   name = random_name();
-  console.log('creating interval: ' + name);
   timers[name] = setInterval(method, time);
 }
 
 function clear_timers(){
   for (key in timers){
-    console.log(timers[key]);
     clearTimeout(timers[key]);
     clearInterval(timers[key]);
     delete timers[key];
@@ -65,7 +33,6 @@ function process_lightshow(details){
     effect = details.effect
     target_div = "#current_song";
     clear_timers();
-    console.log(effect);
     switch(effect){
         case "Random Color":
           color = random_color();
@@ -74,9 +41,6 @@ function process_lightshow(details){
         case "Specific Color":
           color = '#' + details.color_hex;
           text_color = '#' + details.text_color;
-          console.log(color);
-          console.log(details.text);
-          console.log(details.text_color);
           light_show_change(color, details.text, text_color, target_div);
           break;
         case "BW Strobe":
@@ -93,7 +57,6 @@ function process_lightshow(details){
 
 
 function light_show_change(bg_color, text, text_color, target_div) {
-    // .css("color", "#CDCDCD");
     $('body').css('background-color',bg_color);
     $('.navbar-inner').css('background-image', '');
     $('.navbar-inner').css('background-color !important',bg_color);
@@ -105,6 +68,7 @@ function light_show_change(bg_color, text, text_color, target_div) {
 function clear_light_show(target_div){
   clear_timers();
   $('body').css('background-color',"#555");
+  (target_div).css('color', '#fff');
   $(target_div).css('text-align', 'left');
 }
 

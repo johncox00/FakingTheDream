@@ -31,6 +31,12 @@ class AdminController < ApplicationController
 	   end
 	end
 
+  def find_current_song
+    song = Song.where(:current_song => true).first
+    new_current = song ? song :  {:title => "(silence)", :lyric => "We're taking 5. BRB."}
+    return new_current
+  end
+
   def start_light_show
     old_currents = Song.where(:start_light_show => true)
     old_currents.each do |s|
@@ -45,7 +51,6 @@ class AdminController < ApplicationController
     end
     #INITIATE THE LIGHT SHOW
     Thread.new{light_show(id)}
-    # broadcast "/songs/current", new_current
     respond_to do |format|
        format.json { render json: new_current }
      end
@@ -69,8 +74,7 @@ class AdminController < ApplicationController
         sleep(total_duration.seconds)
       end
     end while Song.find(id).start_light_show
-    new_current = Song.find(id)
-    broadcast "/songs/current", new_current
+    broadcast "/songs/current", find_current_song
   end
 
   def ignore_request
