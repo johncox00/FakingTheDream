@@ -45,20 +45,21 @@
               %li
                 = link_to "Dates", "/dates" 
 
-    .container
-      .row.ninety
-        .span6.offset3
-          = bootstrap_flash
-          = yield
-
-      %footer
-        .row.bottom
+    #wrap
+      #main.container
+        .row.ninety
           .span6.offset3
-            %p
-              = link_to(image_tag('fb_logo.png'),"https://www.facebook.com/FakingTheDream")
-              = link_to("Connect with us on facebook.", "https://www.facebook.com/FakingTheDream")
-            %p
-              &copy; 2013 Faking the Dream
+            = bootstrap_flash
+            = yield
+
+    %footer
+      .row.bottom
+        .span6.offset3
+          %p
+            = link_to(image_tag('fb_logo.png'),"https://www.facebook.com/FakingTheDream")
+            = link_to("Connect with us on facebook.", "https://www.facebook.com/FakingTheDream")
+          %p
+            &copy; 2013 Faking the Dream
 
     
 

@@ -73,9 +73,11 @@ function process_lightshow(details){
           break;
         case "Specific Color":
           color = '#' + details.color_hex;
+          text_color = '#' + details.text_color;
           console.log(color);
           console.log(details.text);
-          light_show_change(color, details.text, details.text_color, target_div);
+          console.log(details.text_color);
+          light_show_change(color, details.text, text_color, target_div);
           break;
         case "BW Strobe":
           strobe(details.strobe_duration, target_div);
@@ -95,11 +97,7 @@ function light_show_change(bg_color, text, text_color, target_div) {
     $('.navbar-inner').css('background-image', '');
     $('.navbar-inner').css('background-color !important',bg_color);
     $(target_div).css('color', text_color);
-    //$(target_div).css('width', '100%');
-    //$(target_div).css('min-height', '570px');
     $(target_div).css('text-align', 'center');
-
-    //$(target_div).css('color:' + text_color + ';width:100%;min-height:100%;text-align:center;');
     $(target_div).html('<h1>' + text + '</h1>');
 }
 

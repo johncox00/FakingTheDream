@@ -28,8 +28,22 @@ h1 {
   color: #000000;
 }
 
-.ninety {
-  min-height: 90%;
-  height: 90%;
-  display: block;
+html, body {
+  height: 100%;
 }
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+}
+
+.footer {
+  position: relative;
+  margint-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+} 
