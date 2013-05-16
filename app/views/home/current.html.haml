@@ -1,5 +1,5 @@
 %audio#audio{:controls => false, :loop => true, :src => "/noise.mp3"}
-%a{:onclick => 'play_audio()'}
+%a#play_link{:onclick => 'play_audio()'}
   PLAY
 
 %div#current_song
@@ -17,6 +17,8 @@
     //var id = $("#song_id").val();
     //CheckCurrentSong();
     //var t = setInterval("CheckCurrentSong()", 5000);
+  actuateLink(document.getElementById('play_link'));
+
   $(function() {
 
     var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
