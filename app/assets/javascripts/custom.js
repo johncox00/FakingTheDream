@@ -1,39 +1,35 @@
 ﻿/// <reference path="jquery-ui-1.8.11.js" />
 /// <reference path="jquery-1.5.1-vsdoc.js" />
-$(function() {
-    var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
-    //Faye.Transport.WebSocket.isUsable = function(_,c) { c(false) };
-    faye.disable('websocket');
-    Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
-    faye.setHeader('Access-Control-Allow-Origin', '*');
-    faye.connect();
+// $(function() {
+//     var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
+//     //Faye.Transport.WebSocket.isUsable = function(_,c) { c(false) };
+//     faye.disable('websocket');
+//     Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
+//     faye.setHeader('Access-Control-Allow-Origin', '*');
+//     faye.connect();
 
 
-    faye.subscribe('/songs/current', function (result) {
-      //$("#chat").append("<li>" + data.body + "</li>");
-      if (result.title == "lightshow"){
-        process_lightshow(result.details);
-      } else {
-        clear_light_show("#current_song");
-        var songId = result.id
-        var song = '<h2>' + result.title + '</h2>';
-        song += '<div class="lyric">' + result.lyric + '</div>';
-        var chart = '<h2>' + result.title + '</h2>';
-        chart += '<div class="lyric">' + result.chart + '</div>';
-        if (result.chart == null){ 
-          chart = song;
-        }
-        $("#current_song").html(song);
-        $("#current_chart").html(song);
-        $("#song_id").val(songId);
-      }
+//     faye.subscribe('/songs/current', function (result) {
+//       //$("#chat").append("<li>" + data.body + "</li>");
+//       if (result.title == "lightshow"){
+//         process_lightshow(result.details);
+//       } else {
+//         clear_light_show("#current_song");
+//         var songId = result.id
+//         var song = '<h2>' + result.title + '</h2>';
+//         song += '<div class="lyric">' + result.lyric + '</div>';
+//         var chart = '<h2>' + result.title + '</h2>';
+//         chart += '<div class="lyric">' + result.chart + '</div>';
+//         if (result.chart == null){ 
+//           chart = song;
+//         }
+//         $("#current_song").html(song);
+//         $("#current_chart").html(song);
+//         $("#song_id").val(songId);
+//       }
       
-    });
-
-    
-    
-
-});
+//     });
+// });
 var timers = new Array();
 
 function random_name(){
@@ -69,13 +65,16 @@ function process_lightshow(details){
     effect = details.effect
     target_div = "#current_song";
     clear_timers();
+    console.log(effect);
     switch(effect){
         case "Random Color":
           color = random_color();
           light_show_change(color, details.text, details.text_color, target_div);
           break;
         case "Specific Color":
-          color = '#' + details.hex_color;
+          color = '#' + details.color_hex;
+          console.log(color);
+          console.log(details.text);
           light_show_change(color, details.text, details.text_color, target_div);
           break;
         case "BW Strobe":
@@ -93,6 +92,8 @@ function process_lightshow(details){
 function light_show_change(bg_color, text, text_color, target_div) {
     // .css("color", "#CDCDCD");
     $('body').css('background-color',bg_color);
+    $('.navbar-inner').css('background-image', '');
+    $('.navbar-inner').css('background-color !important',bg_color);
     $(target_div).css('color', text_color);
     //$(target_div).css('width', '100%');
     //$(target_div).css('min-height', '570px');

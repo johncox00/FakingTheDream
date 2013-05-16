@@ -10,7 +10,35 @@
 
 %input#song_id{:type=>"hidden", :value=>"#{@current_song ? @current_song.id : -1}"}
 
-/ :javascript
-/     var id = $("#song_id").val();
-/     CheckCurrentSong();
-/     var t = setInterval("CheckCurrentSong()", 5000);
+:javascript
+    //var id = $("#song_id").val();
+    //CheckCurrentSong();
+    //var t = setInterval("CheckCurrentSong()", 5000);
+  $(function() {
+    var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
+    faye.disable('websocket');
+    Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
+    faye.setHeader('Access-Control-Allow-Origin', '*');
+    faye.connect();
+
+
+    faye.subscribe('/songs/current', function (result) {
+      if (result.title == "lightshow"){
+        process_lightshow(result.details);
+      } else {
+        clear_light_show("#current_song");
+        var songId = result.id
+        var song = '<h2>' + result.title + '</h2>';
+        song += '<div class="lyric">' + result.lyric + '</div>';
+        var chart = '<h2>' + result.title + '</h2>';
+        chart += '<div class="lyric">' + result.chart + '</div>';
+        if (result.chart == null){ 
+          chart = song;
+        }
+        $("#current_song").html(song);
+        $("#current_chart").html(song);
+        $("#song_id").val(songId);
+      }
+      
+    });
+  });
