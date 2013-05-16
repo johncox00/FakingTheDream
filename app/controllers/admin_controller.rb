@@ -72,6 +72,7 @@ class AdminController < ApplicationController
         broadcast "/songs/current", b_o
         total_duration = segment.duration
         sleep(total_duration.seconds)
+        break if !Song.find(id).start_light_show
       end
     end while Song.find(id).start_light_show
     broadcast "/songs/current", find_current_song
