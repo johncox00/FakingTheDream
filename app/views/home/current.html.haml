@@ -1,4 +1,4 @@
-%audio{:autoplay => true, :controls => false, :loop => true, :src => "/noise.mp3"}
+%audio#audio{:controls => false, :loop => true, :src => "/noise.mp3"}
 %div#current_song
   - if @current_song
     %h2
@@ -15,6 +15,9 @@
     //CheckCurrentSong();
     //var t = setInterval("CheckCurrentSong()", 5000);
   $(function() {
+    var audio = document.getElementById('audio');
+    audio.play();
+
     var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
     faye.disable('websocket');
     Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
