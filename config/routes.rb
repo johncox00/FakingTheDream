@@ -21,6 +21,8 @@ FakingTheDream::Application.routes.draw do
 
   match 'dates' => 'home#dates'
 
+  match 'live' => 'home#live'
+
   match 'admin/current' => 'home#current'
 
   match 'songlist' => 'home#songlist'

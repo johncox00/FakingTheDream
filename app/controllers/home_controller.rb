@@ -44,4 +44,6 @@ class HomeController < ApplicationController
   end
 
   def dates; end
+
+  def live; end
 end
