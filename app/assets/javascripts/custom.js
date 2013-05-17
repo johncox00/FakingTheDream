@@ -63,7 +63,6 @@ function light_show_change(bg_color, text, text_color, target_div) {
     $(target_div).css('color', text_color);
     $(target_div).css('text-align', 'center');
     $(target_div).html('<h1>' + text + '</h1>');
-    window.scrollTo(0, 50);
 }
 
 function clear_light_show(target_div){
