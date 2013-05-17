@@ -63,12 +63,12 @@ function light_show_change(bg_color, text, text_color, target_div) {
     $(target_div).css('color', text_color);
     $(target_div).css('text-align', 'center');
     $(target_div).html('<h1>' + text + '</h1>');
-    window.scrollTo(0, 60);
+    //window.scrollTo(0, 60);
 }
 
 function clear_light_show(target_div){
   clear_timers();
-  window.scrollTo(0, 0);
+  //window.scrollTo(0, 0);
   $('body').css('background-color',"#555");
   $(target_div).css('color', '#fff');
   $(target_div).css('text-align', 'left');
