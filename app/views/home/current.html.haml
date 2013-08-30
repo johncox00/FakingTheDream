@@ -1,13 +1,12 @@
 %audio#audio{:controls => false, :loop => true, :src => "/loop.mp3", :preload => true, :autoplay => true}
-
-%div#current_song
+#home_page{:class => "#{@current_song ? 'hide-it' : 'show-it'}"}
+  = render '/shared/home_page'
+%div#current_song{:class => "#{@current_song ? 'show-it' : 'hide-it'}"}
   - if @current_song
     %h2
       = @current_song.title
     .lyric
       = raw(@current_song.lyric)
-  - else
-    Get ready!
 
 %input#song_id{:type=>"hidden", :value=>"#{@current_song ? @current_song.id : -1}"}
 
@@ -18,9 +17,7 @@
 
   $(function() {
 
-    var faye = new Faye.Client('http://rt.fakingthedream.com/faye');
-    faye.disable('websocket');
-    Faye.Transport.WebSocket.isUsable = function($, _, c) { c(false) };
+    var faye = new Faye.Client('http://rt.acctd4.com:9292/faye');
     faye.setHeader('Access-Control-Allow-Origin', '*');
     faye.connect();
 
@@ -31,15 +28,22 @@
       } else {
         clear_light_show("#current_song");
         var songId = result.id;
-        var song = '<h2>' + result.title + '</h2>';
-        song += '<div class="lyric">' + result.lyric + '</div>';
-        //var chart = '<h2>' + result.title + '</h2>';
-        //chart += '<div class="lyric">' + result.chart + '</div>';
-        //if (result.chart == null){ 
-        //  chart = song;
-        //}
-        $("#current_song").html(song);
-        //$("#current_chart").html(song);
+        if (songId > 0){
+          var song = '<h2>' + result.title + '</h2>';
+          song += '<div class="lyric">' + result.lyric + '</div>';
+          //var chart = '<h2>' + result.title + '</h2>';
+          //chart += '<div class="lyric">' + result.chart + '</div>';
+          //if (result.chart == null){ 
+          //  chart = song;
+          //}
+          $("#current_song").html(song);
+          $("#current_song").show();
+          $("#home_page").hide();
+          //$("#current_chart").html(song);
+        } else {
+          $("#current_song").hide();
+          $("#home_page").show();
+        }
         $("#song_id").val(songId);
       }
       

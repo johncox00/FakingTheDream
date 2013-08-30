@@ -24,7 +24,7 @@
     / = favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon'
 
     = javascript_include_tag "application"
-    = javascript_include_tag "http://rt.fakingthedream.com/faye.js"
+    = javascript_include_tag "http://rt.acctd4.com:9292/faye.js"
   %body
 
     .navbar.navbar-fixed-top
@@ -38,8 +38,6 @@
             Faking The Dream
           .container.nav-collapse
             %ul.nav
-              %li
-                = link_to "Current Song", "/current" 
               %li
                 = link_to "Song List", "/songlist" 
               %li
